@@ -1,15 +1,12 @@
+<script>
+	$(function() {
+		$("#headerContent").load("src/views/static/header.html");
+		$("#productListContent").load("src/views/product-list.html");
+		$("#footerContent").load("src/views/static/footer.html");
+	});
+</script>
 
+<nav class="navbar navbar-default navbar-fixed-top" id="headerContent"></nav>
 
-
-
-<script> 
-    $(function(){
-      $("#headerContent").load("src/views/static/header.html"); 
-      $("#productListContent").load("src/views/product-list.html");
-      $("#footerContent").load("src/views/static/footer.html");
-    });
- </script> 
-
-<div id="headerContent"></div>
-<div id="productListContent"></div>
+<div id="productListContent" class="container"></div>
 <div id="footerContent"></div>

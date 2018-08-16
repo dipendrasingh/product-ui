@@ -1,1 +1,47 @@
-<h1>Hello product list....</h1>
+<div class="jumbotron" style="background-color:#fff; padding-left:0px;padding-right:0px;">
+<div class="row">
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">subcat</a></li>
+  <li class="active">Products</li>
+</ol>
+</div>
+
+<script> 
+    $(function(){
+    	var productLen = products.groups.length;
+    	var noOfRows = Math.floor(productLen/3);
+    	if(productLen%3){
+    		noOfRows = noOfRows + 1;
+    	}
+    	
+    	var htmlCode = "";
+    	for(i=0; i< noOfRows; i++){
+    		htmlCode = htmlCode+'<div class="row">';
+    		for(j=0;j<3;j++){
+    			if(((i*3) + j)==productLen){
+    				break;
+    			}
+    			
+    			htmlCode = htmlCode+'<div class="col-sm-6 col-md-4">';
+    			htmlCode = htmlCode+'<div class="thumbnail">';
+    			htmlCode = htmlCode+'<img src="'+ products.groups[(i*3)+j].hero.href + '" alt="...">';
+    			htmlCode = htmlCode+'<div class="caption">';
+    			htmlCode = htmlCode+'<a href="'+products.groups[(i*3)+j].links.www+'">'+products.groups[(i*3)+j].name+'</a>';
+    			htmlCode = htmlCode+'<p>...</p>';
+    			htmlCode = htmlCode+'<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>';
+    			htmlCode = htmlCode+'</div>';
+    			htmlCode = htmlCode+'</div>';
+    			htmlCode = htmlCode+'</div>';
+    		}
+    		htmlCode = htmlCode+'</div>';
+    		
+    	}
+    	
+    	$("#product-list").html(htmlCode);
+    });
+    
+   
+    </script>
+
+<div id="product-list"></div>

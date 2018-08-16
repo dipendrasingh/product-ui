@@ -8,7 +8,11 @@
 </div>
 
 <script> 
+
+
+
     $(function(){
+    	
     	var productLen = products.groups.length;
     	var noOfRows = Math.floor(productLen/3);
     	if(productLen%3){
@@ -25,10 +29,22 @@
     			
     			htmlCode = htmlCode+'<div class="col-sm-6 col-md-4">';
     			htmlCode = htmlCode+'<div class="thumbnail">';
-    			htmlCode = htmlCode+'<img src="'+ products.groups[(i*3)+j].hero.href + '" alt="...">';
+    			htmlCode = htmlCode+'<div class="row">';
+    			htmlCode = htmlCode+'<div class="col-md-2" style="padding-right: 0px">';
+    			for(k=0;k<products.groups[(i*3)+j].images.length;k++){
+    				htmlCode = htmlCode+'<div class="small-thumbnail-list" style="padding: 2px;margin: 1px;">';
+    				htmlCode = htmlCode+'<img style="width:100%"  src="'+ products.groups[(i*3)+j].images[k].href + '" alt="...">';
+    				htmlCode = htmlCode+'</div>';
+    			}
+    			htmlCode = htmlCode+'</div>';
+    			htmlCode = htmlCode+'<div class="col-md-10" style="padding-right: 16px;">';
+    			htmlCode = htmlCode+'<img class="product-image" style="width:100%"  src="'+ products.groups[(i*3)+j].thumbnail.href + '" alt="...">';
+    			htmlCode = htmlCode+'</div>';
+    			htmlCode = htmlCode+'</div>';
+    			
     			htmlCode = htmlCode+'<div class="caption">';
     			htmlCode = htmlCode+'<a href="'+products.groups[(i*3)+j].links.www+'">'+products.groups[(i*3)+j].name+'</a>';
-    			htmlCode = htmlCode+'<p>...</p>';
+    			htmlCode = htmlCode+'<h5>'+products.groups[(i*3)+j].priceRange.selling.low+'-'+ products.groups[(i*3)+j].priceRange.selling.high+'</h5>';
     			htmlCode = htmlCode+'<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>';
     			htmlCode = htmlCode+'</div>';
     			htmlCode = htmlCode+'</div>';
@@ -39,7 +55,21 @@
     	}
     	
     	$("#product-list").html(htmlCode);
+    	$(".product-image").on('load',function() {
+
+           console.log("image load");
+           $(this).parent().siblings().children(".small-thumbnail-list").parent().css({"height": $(this).height(), "overflow-y": "auto", "overflow-x": "hidden"});
+
+        }).on('error', function() {
+            // image couldnt be loaded
+            image.hide();
+
+        }).attr({
+            src: imgSrc
+        });
+    	
     });
+    
     
    
     </script>

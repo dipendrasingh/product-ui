@@ -4,5 +4,8 @@ Product Javscript Project-UI responsive
 # JQUERY
 jQuery JavaScript Library v3.3.1
 
-#bootstrap
+# bootstrap
 3.3.7
+
+# Build
+Copy folder into Tomcat Webapp folder
